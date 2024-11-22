@@ -14,12 +14,17 @@ function onOpenCvReady() {
             console.log("No se ha podido iniciar la camara: " + err);
         });
 
+        //Creamos las diferentes matrices necesarias (input, output y una para grises)
         let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
         let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
         let gray = new cv.Mat();
+        //Creamos un capturador de video
         let cap = new cv.VideoCapture(video);
+        //Creamos un vector de rectangulos
         let faces = new cv.RectVector();
+        //Creamos un clasificador
         let classifier = new cv.CascadeClassifier();
+        //Establecemos la frecuencia de captura
         const FPS = 30;
 
         //Hacemos peticion al clasificador preentrenado
